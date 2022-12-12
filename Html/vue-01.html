@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <!-- 创建一个 todo-item 组件的实例 -->
+            <todo-item v-for="todoItem in todos" v-bind:todo="todoItem"></todo-item>
+
+          </ol>
+        <br>
+        <!--待办事项-->
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+        <br>
+        <div v-if="show"> 显示为 true</div>
+        <button v-on:click="show = ! show">加10</button>
+        <hr>
+        <span v-bind:title="de">
+            Message: {{ message }}
+        </span>
+        <br>
+        <p> {{message}} </p>
+        <input v-model="message">
+    </div>
+    <script src="../JavaScript/vue.js"></script>
+    <script>
+        // 下面是一个子组件
+        const TodoItem = {
+            // 接受从父组件传递的参数
+            props: ['todo'],   //组件属性
+            template: `<div>
+                            <li>{{ todo.text }}</li>
+                            <button v-on:click="submit">按钮</button>
+                        </div>`,
+            data(){
+                return{
+                    user: 'tom'
+                }
+            },
+            methods: {
+                submit(){
+                    console.log("Hello, Component")
+                }
+            }
+        }
+        //<!--这是父组件-->
+        const Message = {
+            components: {
+                TodoItem   //创建组件
+            },
+            
+            data() {
+                return {
+                    message: 123,
+                    de: "asfa",
+                    show: true,
+                    todos: [
+                        { text: '学习 JavaScript' },
+                        { text: '学习 Vue' },
+                        { text: '整个牛项目' }
+                    ]
+                }
+            }
+        }
+        Vue.createApp(Message).mount('#app')
+    </script>
+</body>
+
+</html>
