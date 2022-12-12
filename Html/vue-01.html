@@ -59,7 +59,15 @@
             components: {
                 TodoItem   //创建组件
             },
-            
+            beforeCreate() {
+                console.log("实例创建前")
+            },
+            created() {
+                console.log("cre")
+            },
+            beforeMount() {
+                console.log("Mounted")
+            },
             data() {
                 return {
                     message: 123,

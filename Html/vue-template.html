@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>{{ message }}</span>  //支持JS表达式
+        <br>
+        <span v-once>{{ message }}</span>
+        <br>
+        <button v-on:click="change">按下以修改Message</button>
+        <hr>
+        <div>{{ html  }}</div>
+        <br>
+        <div v-html="html"></div>
+        <hr>
+        <p v-if="seen">看到我了</p>
+    </div>
+    <script src="../JavaScript/vue.js"></script>
+    <script>
+        //创建根组件
+        let root ={
+            data() {
+                return {
+                    message: "Hello Vue!",
+                    html: '<span>llaala</span>',
+                    seen: false
+                }
+            },
+            methods: {
+                change(){
+                    this.message = 'Change New Message!'
+                }
+            },
+        };   
+
+        const app = Vue.createApp(root); //创建Vue对象,即应用实例
+        const vm = app.mount("#app");  //组件实例
+
+
+    </script>
+</body>
+</html>

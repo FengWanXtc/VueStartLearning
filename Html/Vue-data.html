@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+
+    </div>
+    <script src="../JavaScript/vue.js"></script>
+    <script>
+        //创建根组件
+        let root ={
+            data() {
+                return {
+                    number: 1
+                }
+            },
+            methods: {
+                plus(){
+                    this.number ++;  //this 指代的就是下面的vm
+                    console.log(this.number)
+                }
+            },
+        };   
+
+        const app = Vue.createApp(root); //创建Vue对象,即应用实例
+        const vm = app.mount("#app");  //组件实例,同时也是this指代对象
+        console.log(vm.number)
+        // 打印组件方法
+        vm.plus();
+    </script>
+</body>
+</html>

@@ -21,7 +21,7 @@
 <todo-item></todo-item>
 ```
 
-1. 短横线方式使用短横线
+2. 短横线方式使用短横线
 
 ```javascript
 //组件名
@@ -32,3 +32,5 @@
 //使用
 <todo-item></todo-item>
 ```
+
+## 生命周期

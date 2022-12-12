@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <p>Has published books:</p>
+        <span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span>
+    </div>
+    <script src="../JavaScript/vue.js"></script>
+    <script>
+        //创建根组件
+        let root = {
+            data() {  //data里定义的数据就是响应式数据
+                return {
+                    author: {
+                        name: 'John Doe',
+                        books: [
+                            'Vue 2 - Advanced Guide',
+                            'Vue 3 - Basic Guide',
+                            'Vue 4 - The Mystery'
+                        ]
+                    }
+                }
+            },
+            //可以设置多个监听属性
+            computed: {
+                // 一个计算属性的 getter
+                publishedBooksMessage() {
+                    // `this` 指向当前组件实例
+                    return this.author.books.length > 0 ? 'Yes' : 'No'
+                }
+            }
+        };
+
+        const app = Vue.createApp(root); //创建Vue对象,即应用实例
+        const vm = app.mount("#app");  //组件实例
+
+
+    </script>
+</body>
+
+</html>
