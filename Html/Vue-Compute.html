@@ -10,9 +10,13 @@
 
 <body>
     <div id="app">
-
         <p>Has published books:</p>
-        <span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span>
+        <span>{{ publishedBooksMessage }}</span>
+        <hr>
+        <input v-model="firstNa"> 
+        <input v-model="lastNa">
+        <br>
+        <span>{{ fullNa }}</span>
     </div>
     <script src="../JavaScript/vue.js"></script>
     <script>
@@ -27,7 +31,9 @@
                             'Vue 3 - Basic Guide',
                             'Vue 4 - The Mystery'
                         ]
-                    }
+                    },
+                    firstNa: 'Thian',
+                    lastNa: 'Xtc'
                 }
             },
             //可以设置多个监听属性
@@ -36,6 +42,9 @@
                 publishedBooksMessage() {
                     // `this` 指向当前组件实例
                     return this.author.books.length > 0 ? 'Yes' : 'No'
+                },
+                fullNa(){ 
+                    return this.firstNa +" SB " + this.lastNa
                 }
             }
         };
